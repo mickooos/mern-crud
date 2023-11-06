@@ -1,0 +1,41 @@
+div:first-child {
+  --primary: #3f58ce;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 7%;
+  background-color: rgba(1, 1, 1, 0.8);
+  border-bottom: 1px solid #272727;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+.navbar .navbarLogo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+.navbar .navbarLogo span {
+  color: var(--primary);
+}
+.navbar .navbarNav .exitRoute {
+  color: #fff;
+  background: none;
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+}
+.navbar .navbarNav .exitRoute:hover {
+  color: var(--primary);
+}
+
+/* Mobile Phone */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .navbar .navbarNav .exitRoute {
+    font-size: 1.8rem;
+  }
+}

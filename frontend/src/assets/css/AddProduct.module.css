@@ -1,0 +1,120 @@
+div:first-child {
+  --fontColor: #010101;
+  --primary: #3f58ce;
+}
+
+.addProduct {
+  height: 100vh;
+  background: linear-gradient(135deg, #2048cc, #1980bb);
+}
+
+.addProduct .productRoute {
+  color: #fff;
+  position: relative;
+  top: 10px;
+  left: 5px;
+  font-size: 1.5rem;
+  padding: 0px 10px;
+}
+
+.addProduct .productRoute:hover {
+  color: rgb(33, 116, 69);
+}
+
+.addProduct .container {
+  background-color: #ffffff;
+  width: 70%;
+  min-width: 420px;
+  padding: 35px 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 10px;
+  box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);
+}
+
+.addProduct .container h1 {
+  font-size: 30px;
+  color: var(--fontColor);
+}
+
+.addProduct .container p {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  color: #000;
+  font-size: 14px;
+  font-weight: 450;
+}
+
+.addProduct .container .titleSpan {
+  color: var(--primary);
+}
+
+.addProduct .container form {
+  width: 100%;
+  position: relative;
+  margin: 30px auto 0 auto;
+}
+
+.addProduct .container .row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px 30px;
+  margin-bottom: 20px;
+}
+
+.addProduct .container .row .column label {
+  color: var(--fontColor);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.addProduct .container .row .column .errMsg {
+  font-size: 10px;
+  font-weight: 550;
+  color: darkred;
+  text-align: center;
+}
+
+.addProduct .container .row .column textarea,
+.addProduct .container .row .column input,
+.addProduct .container .row .column select {
+  width: 100%;
+  font-weight: 500;
+  color: var(--fontColor);
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1.2px solid #afb2bd;
+  margin-top: 5px;
+}
+
+.addProduct .container .row .column textarea {
+  resize: none;
+}
+
+.addProduct .container .row .column textarea:focus,
+.addProduct .container .row .column input:focus,
+.addProduct .container .row .column select:focus {
+  outline: none;
+  border-color: #afb2bd;
+}
+
+.addProduct .container .row .column input[type="file"]::file-selector-button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.addProduct .container .submit button {
+  border: none;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.addProduct .container .submit button:disabled {
+  background: #2048cca9;
+}

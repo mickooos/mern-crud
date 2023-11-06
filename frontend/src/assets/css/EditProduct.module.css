@@ -1,0 +1,136 @@
+div:first-child {
+  --fontColor: #010101;
+  --primary: #3f58ce;
+}
+
+.editProduct {
+  height: 100vh;
+  background: linear-gradient(135deg, #2048cc, #1980bb);
+}
+
+.editProduct .productRoute {
+  color: #fff;
+  position: relative;
+  top: 10px;
+  left: 5px;
+  font-size: 1.5rem;
+  top: 10px;
+  padding: 0px 10px;
+}
+
+.editProduct .productRoute:hover {
+  color: rgb(33, 116, 69);
+}
+
+.editProduct .container {
+  background-color: #ffffff;
+  width: 70%;
+  min-width: 420px;
+  padding: 35px 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 10px;
+  box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);
+}
+
+.editProduct .container h1 {
+  font-size: 30px;
+  color: var(--fontColor);
+}
+
+.editProduct .container p {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  color: var(--fontColor);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.editProduct .container .titleSpan {
+  color: var(--primary);
+}
+
+.editProduct .container form {
+  width: 100%;
+  position: relative;
+  margin: 30px auto 0 auto;
+}
+
+.editProduct .container .row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px 30px;
+  margin-bottom: 20px;
+}
+
+.editProduct .container .row .column label {
+  color: var(--fontColor);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.editProduct .container .row .column textarea,
+.editProduct .container .row .column input,
+.editProduct .container .row .column select {
+  width: 100%;
+  font-weight: 400;
+  padding: 8px 10px;
+  font-weight: 500;
+  color: var(--fontColor);
+  border-radius: 5px;
+  border: 1.2px solid #c4cae0;
+  margin-top: 5px;
+}
+
+.editProduct .container .row .column .errMsg {
+  font-size: 10px;
+  font-weight: 550;
+  color: darkred;
+  text-align: center;
+}
+
+.editProduct .container .row .column textarea {
+  resize: none;
+}
+
+.editProduct .container .row .column textarea:focus,
+.editProduct .container .row .column input:focus,
+.editProduct .container .row .column select:focus {
+  outline: none;
+  border-color: #3058ad;
+}
+
+.editProduct .container .row .column input[type="file"]::file-selector-button {
+  font-family: "Poppins", sans-serif;
+}
+
+.editProduct .container .row .column img {
+  width: 120px;
+  height: 120px;
+}
+
+.editProduct .container button {
+  border: none;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.editProduct .container button:disabled {
+  background: #2048cca9;
+}
+
+/* Media Queries  */
+
+/* Laptop */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .editProduct .container .row .column img {
+    width: auto;
+    height: 85px;
+  }
+}

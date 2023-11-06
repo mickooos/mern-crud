@@ -1,0 +1,32 @@
+.footer footer {
+  position: fixed;
+  text-align: center;
+}
+
+.footer footer .content {
+  padding: 21rem 0;
+}
+
+.footer footer .content p {
+  color: #fff;
+  margin: -5rem 0 0 50rem;
+  font-weight: 500;
+}
+
+.footer footer .content a {
+  color: #fff;
+}
+
+/* Tablet */
+@media (max-width: 780px) {
+  .footer footer .content p {
+    margin: -5rem 0 0 22rem;
+  }
+}
+
+/* Mobile Phone */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .footer footer .content p {
+    margin: -5rem 0 0 20rem;
+  }
+}

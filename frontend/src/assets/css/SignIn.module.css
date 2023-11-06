@@ -1,0 +1,171 @@
+div:first-child {
+  --primary: #3f58ce;
+  --input: #607d8b;
+  --hover: #5981d2;
+}
+
+.signIn {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.signIn .imageBox {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.signIn .imageBox:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.signIn .imageBox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.signIn .imageBox .overlayText {
+  position: absolute;
+  text-align: center;
+  top: 45%;
+  left: 39%;
+  color: #fff;
+}
+
+.signIn .contentBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.signIn .contentBox .formBox .errMsg {
+  font-size: 13px;
+  font-weight: 550;
+  margin-bottom: 1rem;
+  color: darkred;
+  text-align: center;
+}
+
+.signIn .contentBox .formBox {
+  width: 50%;
+}
+
+.signIn .contentBox .formBox h2 {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  border-bottom: 4px solid var(--primary);
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+.signIn .contentBox .formBox .inputBox,
+.signIn .contentBox .formBox .signinBox,
+.signIn .contentBox .formBox .signupBox {
+  margin-bottom: 20px;
+}
+
+.signIn .contentBox .formBox .inputBox input {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--input);
+  background: transparent;
+  box-shadow:
+    2px 2px 4px #d1d9ed,
+    inset -2px -2px 4px #f9f9f9;
+  border-radius: 30px;
+  transition: 0.25s ease;
+}
+
+.signIn .contentBox .formBox .inputBox .inputForm {
+  color: #010101;
+  font-weight: 500;
+}
+
+.signIn .contentBox .formBox .signinBox button {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none;
+  font-weight: 600;
+  border: 1px solid var(--primary);
+  font-size: 16px;
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.signIn .contentBox .formBox .signinBox button:hover {
+  background-color: var(--hover);
+}
+
+.signIn .contentBox .formBox .signupBox {
+  text-align: center;
+  color: black;
+}
+
+.signIn .contentBox .formBox .signupBox .signupLink {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.signIn .contentBox .formBox .signupBox .signupLink:hover {
+  color: var(--hover);
+}
+
+@media (max-width: 768px) {
+  .signIn .imageBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .signIn .imageBox .overlayText {
+    display: none;
+  }
+  .signIn .contentBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .signIn .contentBox .formBox {
+    width: 100%;
+    margin: 50px;
+    padding: 40px;
+    background: rgb(255 255 255 / 0.9);
+  }
+  .signIn .contentBox .formBox h2 {
+    color: var(--primary);
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  .signIn .contentBox .formBox .signupBox {
+    font-size: 1.3rem;
+  }
+}
