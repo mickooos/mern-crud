@@ -17,9 +17,7 @@ function Navbar() {
   const accessToken = async () => {
     try {
       await axios
-        .get(`/v1/token`, {
-          withCredentials: true,
-        })
+        .get(`/v1/token`)
         .then((res) => {
           const access_token = res.data.accessToken;
           setToken(access_token);
@@ -37,7 +35,6 @@ function Navbar() {
       await axios
         .delete(`/v1/user/logout`, {
           headers: { Authorization: `Bearer ${token}` },
-          withCredentials: true,
         })
         .then((res) => {
           dispatch(logOut());
