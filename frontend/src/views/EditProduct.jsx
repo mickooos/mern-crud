@@ -50,14 +50,12 @@ function EditProduct() {
 
   const getProductById = async () => {
     try {
-      const response = await axiosINT.get(`/v1/product/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setName(response.data.product.name);
-      setPrice(response.data.product.price);
-      setCategories(response.data.product.categories);
-      setDescription(response.data.product.desc);
-      setImage(response.data.product.image);
+      const response = await axiosINT.get(`/v1/products/${id}`);
+      setName(response.data.products.name);
+      setPrice(response.data.products.price);
+      setCategories(response.data.products.categories);
+      setDescription(response.data.products.desc);
+      setImage(response.data.products.image);
     } catch (error) {
       console.log(error);
     }
@@ -115,12 +113,7 @@ function EditProduct() {
       data.append("image", file);
       try {
         await axiosINT
-          .put(`/v1/product/${id}`, data, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "multipart/form-data",
-            },
-          })
+          .put(`/v1/products/${id}`, data)
           .then((res) => {
             navigate("/product");
             console.log(res.data.message);

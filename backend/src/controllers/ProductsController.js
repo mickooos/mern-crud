@@ -26,7 +26,7 @@ export const getProducts = async (req, res) => {
 
 export const getProductById = async (req, res) => {
   try {
-    const product = await prisma.products.findUnique({
+    const products = await prisma.products.findUnique({
       where: { user_id: req.user.userId, productId: req.params.id },
       select: {
         productId: true,
@@ -37,7 +37,7 @@ export const getProductById = async (req, res) => {
         image: true,
       },
     });
-    res.status(200).json({ product });
+    res.status(200).json({ products });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -52,7 +52,7 @@ export const createProduct = async (req, res) => {
       return res.status(400).send({ message: "Mohon Isi Semua Field" });
     }
     // Creating Data
-    const product = await prisma.products.create({
+    const products = await prisma.products.create({
       data: {
         user_id: req.user.userId,
         name,
@@ -65,7 +65,7 @@ export const createProduct = async (req, res) => {
     res.status(201).json({
       status: "success",
       message: "Produk Berhasil Ditambahkan!",
-      data: product,
+      products,
     });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -74,6 +74,7 @@ export const createProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   const { name, price, categories, desc } = req.body;
+  const productId = req.params.id;
   let newImage = null;
   try {
     // Updating Image Data
@@ -89,10 +90,10 @@ export const updateProduct = async (req, res) => {
       newImage = req.body.oldImage;
     }
     // Updating Data
-    const product = await prisma.products.update({
+    const products = await prisma.products.update({
       where: {
         user_id: req.user.userId,
-        productId: req.params.id,
+        productId: productId,
       },
       data: {
         name,
@@ -104,8 +105,8 @@ export const updateProduct = async (req, res) => {
     });
     res.status(200).json({
       status: "success",
-      message: "Produk Berhasil Diubah!",
-      data: product,
+      message: `Produk ${productId} Berhasil Diubah!`,
+      products,
     });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -113,6 +114,7 @@ export const updateProduct = async (req, res) => {
 };
 
 export const deleteProduct = async (req, res) => {
+  const productId = req.params.id;
   // Checking Image Existence
   const isExist = await prisma.products.findFirst({
     where: { productId: req.params.id },
@@ -127,10 +129,12 @@ export const deleteProduct = async (req, res) => {
     await prisma.products.delete({
       where: {
         user_id: req.user.userId,
-        productId: req.params.id,
+        productId: productId,
       },
     });
-    res.status(200).json({ message: "Produk Berhasil Dihapus", success: true });
+    res
+      .status(200)
+      .json({ message: `Produk ${productId} Berhasil Dihapus`, success: true });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

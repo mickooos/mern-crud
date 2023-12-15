@@ -10,11 +10,11 @@ const persistConfig = {
   storage,
 };
 
-const reducer = combineReducers({
+const rootReducer = combineReducers({
   authData: authSlice,
 });
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,

@@ -28,7 +28,7 @@ function ProductList() {
           setUser(decoded.name);
         })
         .catch((err) => {
-          console.log(err.response.data.messagge);
+          console.log(err.response.data.message);
         });
     } catch (error) {
       console.log(error);
@@ -52,9 +52,7 @@ function ProductList() {
   const getProducts = async () => {
     try {
       await axiosINT
-        .get(`/v1/products`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get(`/v1/products`)
         .then((res) => {
           setProducts(res.data.products);
           setFilteredProducts(res.data.products);
@@ -84,15 +82,14 @@ function ProductList() {
   const deleteProduct = async (id) => {
     try {
       await axiosINT
-        .delete(`/v1/product/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .delete(`/v1/products/${id}`)
         .then((res) => {
           console.log(res.data.message);
         })
         .catch((err) => {
           console.log(err.response.data.message);
         });
+      getProducts();
     } catch (error) {
       console.log(error);
     }

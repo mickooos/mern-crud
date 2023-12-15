@@ -15,9 +15,9 @@ router.delete("/v1/user/logout", isAuth, user.Logout);
 router.get("/v1/token", refreshToken);
 // Product Routes
 router.get("/v1/products", isAuth, prod.getProducts);
-router.get("/v1/product/:id", isAuth, prod.getProductById);
+router.get("/v1/products/:id", isAuth, prod.getProductById);
 router.post("/v1/products", isAuth, upload, prod.createProduct);
-router.put("/v1/product/:id", isAuth, upload, prod.updateProduct);
-router.delete("/v1/product/:id", isAuth, prod.deleteProduct);
+router.put("/v1/products/:id", isAuth, upload, prod.updateProduct);
+router.delete("/v1/products/:id", isAuth, prod.deleteProduct);
 
 export default router;

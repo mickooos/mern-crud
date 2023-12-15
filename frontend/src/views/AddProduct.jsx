@@ -32,11 +32,6 @@ function AddProduct() {
     }
   };
 
-  const uploadImage = (e) => {
-    const image = e.target.files[0];
-    setFile(image);
-  };
-
   const list = [
     { id: 1, name: "Monitor" },
     { id: 2, name: "Keyboard" },
@@ -44,6 +39,11 @@ function AddProduct() {
     { id: 4, name: "Camera" },
     { id: 5, name: "Microphone" },
   ];
+
+  const uploadImage = (e) => {
+    const image = e.target.files[0];
+    setFile(image);
+  };
 
   const nameValid = useMemo(() => {
     return !!name;
