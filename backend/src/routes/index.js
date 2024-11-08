@@ -3,7 +3,7 @@ import * as user from "../controllers/UserController.js";
 import * as prod from "../controllers/ProductsController.js";
 import { refreshToken } from "../controllers/TokenController.js";
 import { isAuth } from "../middlewares/Authentication.js";
-import { upload } from "../storage/FileStorage.js";
+import { upload } from "../middlewares/FileStorage.js";
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ const router = express.Router();
 router.post("/v1/user/register", user.Register);
 router.post("/v1/user/login", user.Login);
 router.get("/v1/user", isAuth, user.Profile);
-router.delete("/v1/user/logout", isAuth, user.Logout);
+router.delete("/v1/user/logout", user.Logout);
 router.get("/v1/token", refreshToken);
 // Product Routes
 router.get("/v1/products", isAuth, prod.getProducts);

@@ -38,7 +38,7 @@ export const Login = async (req, res) => {
     // Find user password and matched the password
     const isMatched = await bcrypt.compare(password, user.password);
     if (!isMatched) return res.status(401).send({ message: "Password Salah" });
-    // Set refresh ann access token
+    // Set refresh an access token
     const accessToken = jwt.sign({ email }, process.env.ACCESS_TOKEN, {
       expiresIn: process.env.AT_EXPIRE,
     });

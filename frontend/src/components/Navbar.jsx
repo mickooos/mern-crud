@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../store/slices/authSlice";
 import { useNavigate } from "react-router-dom";
@@ -6,36 +5,13 @@ import axios from "axios";
 import nav from "../assets/css/Navbar.module.css";
 
 function Navbar() {
-  const [token, setToken] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    accessToken();
-  }, []);
-
-  const accessToken = async () => {
-    try {
-      await axios
-        .get(`/v1/token`)
-        .then((res) => {
-          const access_token = res.data.accessToken;
-          setToken(access_token);
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const signOut = async () => {
     try {
       await axios
-        .delete(`/v1/user/logout`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .delete(`/v1/user/logout`)
         .then((res) => {
           dispatch(logOut());
           navigate("/");
