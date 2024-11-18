@@ -5,11 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import si from "../../assets/css/SignIn.module.css";
 import authBg from "../../assets/img/auth-gradient.png";
+import Cookies from "js-cookie";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setErrMsg] = useState("");
+  const access = import.meta.env.VITE_USER_ACCESS;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -23,6 +25,7 @@ function SignIn() {
           { headers: { "Content-Type": "application/json" } }
         )
         .then((res) => {
+          Cookies.set("userAccess", access, { expires: 1 });
           dispatch(logIn());
           navigate("/product");
           console.log(res.data.message);

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
 const initialState = {
-  isAuthenticated: !!Cookies.get("token"),
+  isAuthenticated: !!Cookies.get("userAccess"),
 };
 
 const authSlice = createSlice({
@@ -14,9 +14,10 @@ const authSlice = createSlice({
     },
     logOut: (state) => {
       state.isAuthenticated = false;
+      Cookies.remove("userAccess");
     },
     checkAuth: (state) => {
-      state.isAuthenticated = !!Cookies.get("token");
+      state.isAuthenticated = !!Cookies.get("userAccess");
     },
   },
 });

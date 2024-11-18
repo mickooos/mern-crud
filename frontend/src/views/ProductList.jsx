@@ -8,23 +8,22 @@ function ProductList() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [user, setUser] = useState("");
-  const [token, setToken] = useState("");
   const [query, setQuery] = useState("");
+
   const axiosINT = axios.create();
 
   useEffect(() => {
-    accessToken();
+    refreshToken();
     getProducts();
   }, []);
 
-  const accessToken = async () => {
+  const refreshToken = async () => {
     try {
       await axios
         .get(`/v1/token`)
         .then((res) => {
-          const access_token = res.data.accessToken;
-          const decoded = jwtDecode(access_token);
-          setToken(access_token);
+          const token = res.data.accessToken;
+          const decoded = jwtDecode(token);
           setUser(decoded.name);
         })
         .catch((err) => {
@@ -38,10 +37,8 @@ function ProductList() {
   axiosINT.interceptors.request.use(
     async (config) => {
       const response = await axios.get(`/v1/token`);
-      config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-      setToken(response.data.accessToken);
-      const decoded = jwtDecode(response.data.accessToken);
-      setUser(decoded.name);
+      const token = response.data.accessToken;
+      config.headers.Authorization = `Bearer ${token}`;
       return config;
     },
     (error) => {

@@ -10,27 +10,20 @@ function EditProduct() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [file, setFile] = useState("");
-  const [token, setToken] = useState("");
   const { id } = useParams();
   const axiosINT = axios.create();
   const navigate = useNavigate();
 
   useEffect(() => {
-    accessToken();
+    refreshToken();
     getProductById();
   }, []);
 
-  const accessToken = async () => {
+  const refreshToken = async () => {
     try {
-      await axios
-        .get(`/v1/token`)
-        .then((res) => {
-          const access_token = res.data.accessToken;
-          setToken(access_token);
-        })
-        .catch((err) => {
-          console.log(err.response.data.message);
-        });
+      await axios.get(`/v1/token`).catch((err) => {
+        console.log(err.response.data.message);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -39,8 +32,8 @@ function EditProduct() {
   axiosINT.interceptors.request.use(
     async (config) => {
       const response = await axios.get(`/v1/token`);
-      config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-      setToken(response.data.accessToken);
+      const token = response.data.accessToken;
+      config.headers.Authorization = `Bearer ${token}`;
       return config;
     },
     (error) => {

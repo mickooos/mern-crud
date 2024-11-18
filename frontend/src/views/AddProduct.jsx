@@ -9,20 +9,20 @@ function AddProduct() {
   const [categories, setCategories] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState("");
-  const [token, setToken] = useState("");
+  const [accessToken, setAccessToken] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    accessToken();
+    refreshToken();
   }, []);
 
-  const accessToken = async () => {
+  const refreshToken = async () => {
     try {
       await axios
         .get(`/v1/token`)
         .then((res) => {
-          const access_token = res.data.accessToken;
-          setToken(access_token);
+          const token = res.data.accessToken;
+          setAccessToken(token);
         })
         .catch((err) => {
           console.log(err.response.data.message);
@@ -81,7 +81,7 @@ function AddProduct() {
         await axios
           .post(`/v1/products`, data, {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${accessToken}`,
               "Content-Type": "multipart/form-data",
             },
           })
